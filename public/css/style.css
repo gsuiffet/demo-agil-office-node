@@ -1,0 +1,17 @@
+.title {
+    background-color: #E34C26;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 45px;
+    font-size: 25px;
+}
+
+.contact {
+    margin: 15px;
+    padding: 15px;
+    width : 20%;
+    color:#777777;
+}
