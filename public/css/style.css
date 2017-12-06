@@ -9,13 +9,14 @@
     font-size: 25px;
 }
 
-.contact {
+.list-group {
     margin: 15px;
     padding: 15px;
     width : 20%;
     color:#777777;
 }
 
-ul {
-    list-style-type: none;
+a:hover {
+    background-color: #F73100!important;
+    color: #fff!important;
 }

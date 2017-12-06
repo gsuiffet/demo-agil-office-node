@@ -13,15 +13,15 @@ app.get('/', function (req, res) {
 app.post('/call', function (req, res) {
     request({
         headers: {
-            //'agil-cookie': 'session_id=be423de133d16b55fd6da144ec31d222',
+            'Cookie': '_agil_ws_session_id=61cbb6f212eb5b61e97a95cfb4b9fe07',
             'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json'
         },
-        url: 'https://ws.agiloffice.fr/demo/session_login?username=demo3&password=demo3',
+        url: 'https://ws.agiloffice.fr/demo/phone_call?number=8002',
         method: 'POST'
     }, function (err, res, body) {
+        console.log("err", err);
         console.log("body", body);
-        console.log("err", res);
         console.log('statusCode:', res && res.statusCode);
     });
     res.render('index');
