@@ -11,6 +11,22 @@
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#select_link').click(function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/call',
+                    success: function(data) {
+                        console.log('success');
+                        console.log(data);
+                        //console.log(JSON.stringify(data));
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body class="page">
     <h1 class="title"> Liste de contacts</h1>
@@ -18,11 +34,11 @@
         <div class="row">
             <div class="contact col-xs-12 col-sm-6 col-md-3 col-lg-2">
                 <ul class="list-group text-center data-contact">
-                    <li class="list-group-item">8001</li>
-                    <li class="list-group-item">8002</li>
-                    <li class="list-group-item">8003</li>
-                    <li class="list-group-item">8004</li>
-                    <li class="list-group-item">8005</li>
+                    <li><a href="#" class="list-group-item list-group-item-action">8001</a></li>
+                    <li><a href="#" id="select_link" class="list-group-item list-group-item-action">8002</a></li>
+                    <li><a href="#" class="list-group-item list-group-item-action">8003</a></li>
+                    <li><a href="#" class="list-group-item list-group-item-action">8004</a></li>
+                    <li><a href="#" class="list-group-item list-group-item-action">8005</a></li>
                 </ul>
             </div>
         </div>
