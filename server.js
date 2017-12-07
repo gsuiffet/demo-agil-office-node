@@ -48,6 +48,7 @@ app.get('/call', function (req, res) {
     });
 });
 
-app.listen(8080, function () {
+var port= (process.env.PORT || 8080);
+app.listen(port, function () {
     console.log("Server listening on port 8080");
 });
