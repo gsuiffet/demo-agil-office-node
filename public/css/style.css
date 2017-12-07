@@ -20,3 +20,8 @@ a:hover {
     background-color: #F73100!important;
     color: #fff!important;
 }
+
+.fa-bell {
+    float: right;
+    margin-left: -14px;
+}
