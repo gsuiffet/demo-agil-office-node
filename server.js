@@ -13,13 +13,14 @@ app.get('/', function (req, res) {
 });
 
 app.get('/call', function (req, res) {
+    console.log("call", req.query.number);
     request({
         headers: {
             'Cookie': '_agil_ws_session_id=61cbb6f212eb5b61e97a95cfb4b9fe07',
             'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json'
         },
-        url: 'https://ws.agiloffice.fr/demo/phone_call?number=8002',
+        url: 'https://ws.agiloffice.fr/demo/phone_call?number='+ req.query.number,
         method: 'POST'
     }, function (err, rep, body) {
         console.log("err", err);
@@ -42,7 +43,7 @@ app.get('/call', function (req, res) {
                 if (err != true) {
                     notification = true;
                 }
-                res.send({connect:connect, notification:notification});
+                res.render("index",{connect:connect, notification:notification});
             });
         }
     });
