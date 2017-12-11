@@ -1,8 +1,7 @@
 var express = require('express');
 var app = express();
 var request = require('request');
-var connect = false;
-var notification = false;
+var cookie = "";
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -27,48 +26,15 @@ function getCookies(callback){
 }
 
 app.get('/', function (req, res) {
-    res.render('index',{connect:connect, notification:notification});
-});
-
-app.get('/call', function (req, res) {
-    console.log("call", req.query.number);
-    getCookies(function(err, cookies){
-        if(!err) {
-            console.log("cookies" ,cookies);
-            request({
-                headers: {
-                    'Cookie': '_agil_ws_'+cookies,
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Accept': 'application/json'
-                },
-                url: 'https://ws.agiloffice.fr/demo/phone_call?number='+ req.query.number,
-                method: 'POST'
-            }, function (err, rep, body) {
-                console.log("err", err);
-                console.log("body", body);
-                console.log('statusCode:', rep && rep.statusCode);
-                if (err != true) {
-                    connect = true;
-                    request({
-                        headers: {
-                            'Cookie': '_agil_ws_'+cookies,
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'Accept': 'application/json'
-                        },
-                        url: 'https://ws.agiloffice.fr/demo/phone_lamp?phone=8003&lamp=8002&status=1',
-                        method: 'POST'
-                    }, function (err, rep, body) {
-                        console.log("err res", err);
-                        console.log("body res", body);
-                        console.log('statusCode res', rep && rep.statusCode);
-                        if (err != true) {
-                            notification = true;
-                        }
-                        res.render("index",{connect:connect, notification:notification});
-                    });
-                }
-            });
+    getCookies(function(err, cookies) {
+        if (!err) {
+            console.log("cookie" ,"_agil_ws_"+cookies);
+            cookie = "_agil_ws_"+cookies;
         }
+        res.setHeader("Set-Cookie",cookie);
+        //res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Credentials','true');
+        res.render('index');
     });
 });
 
