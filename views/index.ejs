@@ -35,11 +35,29 @@
     <h1 class="title"> Liste de contacts</h1>
     <div class="container">
         <div class="row">
+            <h1>Authentification</h1>
+            <form action="./auth" method="POST">
+                <div class="form-group" >
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" name="username" class="form-control" id="exampleInputUsername" placeholder="Enter votre username">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <%if (cookie != "") {%>
+    <div class="container">
+        <div class="row">
             <div class="list-group text-center col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                    <a href="#" id="select_link" class="list-group-item list-group-item-action">8002</a>
-                    <a href="#" class="list-group-item list-group-item-action">8003</a>
+                <a href="#" id="select_link" class="list-group-item list-group-item-action">8002</a>
+                <a href="#" class="list-group-item list-group-item-action">8003</a>
             </div>
         </div>
     </div>
+    <%}%>
 </body>
 </html>
