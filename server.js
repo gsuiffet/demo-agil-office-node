@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var request = require('request');
 var bodyParser = require('body-parser');
-var cookie = "";
+var cookie;
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -29,6 +29,7 @@ app.post('/auth', function (req, res) {
         }, function (err, res) {
             console.log('statusCode:', res && res.statusCode);
             if (!err && res.statusCode == 200) {
+                //console.log('res.headers:', res.headers);
                 return callback(null, res.headers['agil-cookie']);
             } else {
                 return callback(err);
@@ -37,12 +38,17 @@ app.post('/auth', function (req, res) {
     }
     getCookies(function(err, cookies) {
         if (!err) {
-            console.log("cookie" ,"_agil_ws_"+cookies);
+            console.log("cookie", "_agil_ws_"+cookies);
             cookie = "_agil_ws_"+cookies;
         }
+        res.setHeader("Set-Cookie",cookie, { httpOnly: true, path:'/'});
+        res.setHeader("Access-Control-Allow-Credentials", true);
+        res.setHeader("Access-Control-Allow-Headers", "*");
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.render('index',{cookie:cookie});
     });
 });
+
 
 var port= (process.env.PORT || 8080);
 app.listen(port, function () {
