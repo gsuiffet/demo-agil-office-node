@@ -12,85 +12,11 @@
     <script src="https://use.fontawesome.com/81953da33d.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script>
-        $( document ).ready(function() {
-            $('#select_link').click(function(e){
-                e.preventDefault();
-                /*
-                fetch('https://ws.agiloffice.fr/demo/phone_call?number=8003',{
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        //'Access-Control-Allow-Origin': '*',
-                    },
-                    credentials: 'include',
-                }).then(function (data) {
-                    return data.json()
-                }).then(function(results) {
-                    console.log("results",results);
-                });
-                */
-                $.ajax({
-                    type: 'POST',
-                    url: 'https://ws.agiloffice.fr/demo/phone_call?number=8003',
-                    //cache: false,
-                    dataType: 'json',
-                    xhrFields: {
-                        withCredentials: true,
-                    },
-                    mode: 'no-cors',
-                    crossDomain: true,
-                    /*
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader("Cookie", document.cookie);
-                    },
-                    */
-                    /*
-                    headers: {
-                        'Accept': 'application/json',
-                        'Access-Control': '*',
-                        'Access-Control-Allow-Credentials': true,
-                        //'Access-Control-Allow-Headers': '*',
-                    },
-                    */
-                    success: function(cookies) {
-                        console.log(cookies);
-                        //cookie = cookies.cookies;
-                    }
-                });
-
-            });
-        })
-    </script>
 </head>
 <body class="page">
-    <h1 class="title"> Liste de contacts</h1>
-    <div class="container">
-        <div class="row">
-            <h1>Authentification</h1>
-            <form action="./auth" method="POST">
-                <div class="form-group" >
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="text" name="username" class="form-control" id="exampleInputUsername" placeholder="Enter votre username">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+    <div>
+        <div id="container"></div>
     </div>
-    <%if (cookie != {}) {%>
-    <%=cookie%>
-    <div class="container">
-        <div class="row">
-            <div class="list-group text-center col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                <a href="#" id="select_link" class="list-group-item list-group-item-action">8002</a>
-                <a href="#" class="list-group-item list-group-item-action">8003</a>
-            </div>
-        </div>
-    </div>
-    <%}%>
+    <script src="bundle.js"></script>
 </body>
 </html>
