@@ -16,6 +16,11 @@
     color:#777777;
 }
 
+input {
+    height: 30px;
+    display: block;
+}
+
 a:hover {
     background-color: #F73100!important;
     color: #fff!important;
