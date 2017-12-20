@@ -1,5 +1,5 @@
 # demo-agil-office-node
-Exemple d'intégration de l'api Agil OFFICE sur un server node
+Exemple d'intégration de l'api Agil OFFICE sur node & react
 
 npm install <br/>
-node server.js
+npm start
